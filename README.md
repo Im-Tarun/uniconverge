@@ -75,4 +75,17 @@ No POST request needed — added users are stored locally.
 ### Clone the repository
 ```bash
 git clone https://github.com/Im-Tarun/uniconverge.git
-cd user-management-dashboard
+cd uniconverge
+```
+
+## Development 
+```
+npm install
+npm run dev
+```
+
+## Production
+```
+npm run build
+npm run preview
+```
