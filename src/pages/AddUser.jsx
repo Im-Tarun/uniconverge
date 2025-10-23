@@ -3,12 +3,15 @@ import { useNavigate } from "react-router-dom";
 
 const AddUser = () => {
   const navigate = useNavigate();
+  
   const [form, setForm] = useState({
     name: "",
     email: "",
     phone: "",
     company: "",
   });
+
+  const userDetails = ["name", "email", "phone", "company"];
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -22,18 +25,18 @@ const AddUser = () => {
     }
     const newUser = { id: Date.now(), ...form, company: { name: form.company } };
 
-    const stored = JSON.parse(localStorage.getItem("addedUsers")) || [];
+    const stored = JSON.parse(localStorage.getItem("addedUsers")) || []
     localStorage.setItem("addedUsers", JSON.stringify([...stored, newUser]));
 
     alert("User added successfully!");
-    navigate("/");
+    navigate("/")
   };
 
   return (
     <div className="max-w-md mx-auto bg-white p-6 rounded shadow">
       <h2 className="text-2xl font-semibold mb-4">Add New User</h2>
       <form onSubmit={handleSubmit} className="space-y-3">
-        {["name", "email", "phone", "company"].map((field) => (
+        {userDetails.map((field) => (
           <input
             key={field}
             name={field}
